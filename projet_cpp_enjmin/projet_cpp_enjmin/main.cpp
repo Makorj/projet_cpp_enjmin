@@ -6,8 +6,8 @@ using namespace std;
 
 int main()
 {
-	const SHORT SCREEN_WIDTH = 200;
-	const SHORT SCREEN_HEIGHT = 200;
+	const SHORT SCREEN_WIDTH = 40;
+	const SHORT SCREEN_HEIGHT = 20;
 
 	HANDLE hOutput = (HANDLE)GetStdHandle(STD_OUTPUT_HANDLE);
 
