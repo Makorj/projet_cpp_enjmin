@@ -115,6 +115,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Collectible.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GraphicalEntity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="View.cpp" />
@@ -122,6 +124,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CharInfo.h" />
+    <ClInclude Include="Collectible.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="GraphicalEntity.h" />
     <ClInclude Include="View.h" />
     <ClInclude Include="VirtualScreen.h" />
