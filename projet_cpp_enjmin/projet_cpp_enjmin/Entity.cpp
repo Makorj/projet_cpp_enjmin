@@ -1,4 +1,7 @@
 #include "Entity.h"
+#include "GraphicalEntity.h"
+
+//CONSTRUCTOR & DESTRUCTOR_________________________________________________________________________
 
 Entity::Entity()
 {
@@ -10,7 +13,7 @@ Entity::Entity(int x, int y)
 	_posY = y;
 }
 
-
+//ACCESSER & GETTER_______________________________________________________________________________
 
 int & Entity::getPosX()
 {
@@ -20,4 +23,9 @@ int & Entity::getPosX()
 int & Entity::getPosY()
 {
 	return _posY;
+}
+
+GraphicalEntity& Entity::GetRenderer()
+{
+	return renderer;
 }
