@@ -6,7 +6,7 @@ class Collectible : public Entity
 	public:
 		Collectible()=default;
 		Collectible(int x, int y);
-		~Collectible();
+		~Collectible() = default;
 
 		bool getCollectible();
 };

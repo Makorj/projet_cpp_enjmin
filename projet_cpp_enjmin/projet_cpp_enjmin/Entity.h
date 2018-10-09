@@ -1,4 +1,6 @@
 #pragma once
+#include "GraphicalEntity.h"
+
 class Entity 
 {
 //CLASSE ABSTRAITE POUR LES OBJETS SUR LA MAP 
@@ -12,6 +14,7 @@ class Entity
 		int & getPosX();
 		int & getPosY();
 
+		GraphicalEntity & GetRenderer();
 	protected: 
 		int _posX;
 		int _posY;

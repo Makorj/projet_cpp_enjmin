@@ -1,6 +1,7 @@
 #include "VirtualScreen.h"
 #include <string>
 #include <cstring>
+#include <time.h>
 
 
 VirtualScreen::VirtualScreen()
@@ -62,11 +63,13 @@ void VirtualScreen::draw(const char* sprite, int width, int height, int coordX, 
 
 void VirtualScreen::clear()
 {
+	int t = time(nullptr);
+
 	for (int i = 0; i < VSCREEN_HEIGHT; i++)
 	{
 		for (int j = 0; j < VSCREEN_WIDTH; j++)
 		{
-			_virtualScreenBuffer[i][j].Attributes = _clearedVirtualScreenBuffer[i][j].Attributes;
+			_virtualScreenBuffer[i][j].Attributes = t % 2 == 0 ? 0x0040 : 0x0040 + 0x0080;//_clearedVirtualScreenBuffer[i][j].Attributes;
 			_virtualScreenBuffer[i][j].Char =_clearedVirtualScreenBuffer[i][j].Char;
 		}
 	}
