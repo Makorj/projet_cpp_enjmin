@@ -9,6 +9,7 @@ private:
 
 	static const int VSCREEN_HEIGHT = 90;
 	static const int VSCREEN_WIDTH = 160;
+
 	
 	HANDLE _handleOutput;
 
@@ -27,5 +28,10 @@ public:
 
 	void clear();
 	void flip();
+
+#ifdef _DEBUG	
+	static std::string debug_stream;
+	static void debug(std::string debug_string);
+#endif
 };
 

@@ -2,6 +2,7 @@
 #include <string>
 #include "CharInfo.h"
 
+
 class VirtualScreen;
 
 class GraphicalEntity
@@ -20,7 +21,7 @@ private:
 	short _yAnchor;
 
 public:
-	GraphicalEntity() = default;
+	GraphicalEntity();
 	GraphicalEntity(const std::string& sprite, const short& col, const short& line, short xAnchor=0, short yAnchor=0);
 	GraphicalEntity(const std::string& sprite, CharInfo* spriteInfo, const short& col, const short& line, short xAnchor = 0, short yAnchor = 0);
 
