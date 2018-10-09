@@ -120,12 +120,14 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GhostMovement.cpp" />
     <ClCompile Include="GraphicalEntity.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapTile.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="PlayerEntity.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="View.cpp" />
     <ClCompile Include="VirtualScreen.cpp" />
   </ItemGroup>
@@ -137,11 +139,13 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GhostMovement.h" />
     <ClInclude Include="GraphicalEntity.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapTile.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="PlayerEntity.h" />
     <ClInclude Include="PlayerMovement.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="View.h" />
     <ClInclude Include="VirtualScreen.h" />
   </ItemGroup>
