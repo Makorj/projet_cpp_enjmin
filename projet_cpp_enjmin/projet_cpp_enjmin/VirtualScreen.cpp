@@ -3,6 +3,10 @@
 #include <cstring>
 #include <time.h>
 
+#ifndef _DEBUG
+#define VirtualScreen::debug(x) Log::debug(x)
+#endif
+
 
 VirtualScreen::VirtualScreen()
 	: _handleOutput((HANDLE)GetStdHandle(STD_OUTPUT_HANDLE)) 
@@ -83,4 +87,16 @@ void VirtualScreen::flip()
 
 	WriteConsoleOutput(_handleOutput, (CHAR_INFO * )_virtualScreenBuffer, dwBufferSize,
 		dwBufferCoord, &rcRegion);
+}
+
+std::string VirtualScreen::debug_stream = "";
+
+void VirtualScreen::debug(std::string debug_string)
+{
+	std::string separtion_str = " | ";
+
+	if (debug_stream.size() + debug_string.size() + separtion_str.size() >= VSCREEN_WIDTH)
+		debug_stream = debug_stream.substr(debug_string.size()+3) + separtion_str + debug_string;
+	else
+		debug_stream += separtion_str + debug_string;
 }

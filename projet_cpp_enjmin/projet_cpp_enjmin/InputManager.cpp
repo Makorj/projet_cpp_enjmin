@@ -7,12 +7,21 @@ InputManager* InputManager::_instance = nullptr;
 
 InputManager::InputManager()
 {
+	if (_instance == nullptr)
+	{
+		_instance = this;
+	}
+	else if (_instance != this)
+	{
+		delete this;
+	}
 }
 
 
 InputManager::~InputManager()
 {
-	delete this;
+	if (_instance != nullptr && _instance != this)
+		delete this;
 }
 
 InputManager & InputManager::getInstance()

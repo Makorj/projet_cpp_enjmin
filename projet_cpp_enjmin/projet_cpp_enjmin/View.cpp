@@ -31,7 +31,14 @@ volatile int posY = 50;
 void View::Update()
 {
 	if (InputManager::getInstance().getKbInfos().KEY_RIGHT)
-		posX++;
+		VirtualScreen::debug("KEY RIGHT");
+	if (InputManager::getInstance().getKbInfos().KEY_LEFT)
+		VirtualScreen::debug("KEY LEFT");
+
+	if (InputManager::getInstance().getKbInfos().KEY_UP)
+		VirtualScreen::debug("KEY UP");
+	if (InputManager::getInstance().getKbInfos().KEY_DOWN)
+		VirtualScreen::debug("KEY DOWN");
 }
 
 void View::Render()
@@ -46,5 +53,10 @@ void View::Render()
 	}
 
 	_screen.draw(florent_str.c_str(), 86, 7, posX, posY);
+
+#ifdef _DEBUG
+	_screen.draw(VirtualScreen::debug_stream.c_str(), VirtualScreen::debug_stream.size(), 1, 0, 1);
+#endif // DEBUG
+
 	_screen.flip();
 }

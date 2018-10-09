@@ -18,7 +18,7 @@ int main()
 	t.start();
 	while (inputManager.getKbInfos().ESCAPE != true)
 	{
-		//inputManager.resetInfos();
+		inputManager.resetInfos();
 		inputManager.updateKbEvents();
 
 		_view.Update();
