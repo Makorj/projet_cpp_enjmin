@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers sources\Entities">
+      <UniqueIdentifier>{c541c722-9790-491d-9d49-dc6bfdd9e7be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Entities">
+      <UniqueIdentifier>{5def0de9-9dee-480e-9008-df549b31abf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Movement">
+      <UniqueIdentifier>{a15487b9-36ba-4224-a485-4967d56c2572}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Movement">
+      <UniqueIdentifier>{1b3ff6b4-f590-4bfd-9ff2-b956ace8d9a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,11 +39,32 @@
     <ClCompile Include="GraphicalEntity.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Fichiers sources\Entities</Filter>
+    </ClCompile>
     <ClCompile Include="Collectible.cpp">
+      <Filter>Fichiers sources\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerEntity.cpp">
+      <Filter>Fichiers sources\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMovement.cpp">
+      <Filter>Fichiers sources\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="MovementComponent.cpp">
+      <Filter>Fichiers sources\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="GhostMovement.cpp">
+      <Filter>Fichiers sources\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="Data.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
+    <ClCompile Include="Map.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTile.cpp">
+      <Filter>Fichiers sources\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -47,11 +80,35 @@
     <ClInclude Include="CharInfo.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Fichiers d%27en-tête\Entities</Filter>
+    </ClInclude>
     <ClInclude Include="Collectible.h">
+      <Filter>Fichiers d%27en-tête\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerEntity.h">
+      <Filter>Fichiers d%27en-tête\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>Fichiers d%27en-tête\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementComponent.h">
+      <Filter>Fichiers d%27en-tête\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMovement.h">
+      <Filter>Fichiers d%27en-tête\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="GhostMovement.h">
+      <Filter>Fichiers d%27en-tête\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="Data.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
+    <ClInclude Include="Map.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTile.h">
+      <Filter>Fichiers d%27en-tête\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

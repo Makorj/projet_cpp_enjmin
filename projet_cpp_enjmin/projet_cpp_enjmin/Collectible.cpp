@@ -10,7 +10,7 @@ void Collectible::UpdateEntity()
 
 //CONSTRUCTOR & DESTRUCTOR_________________________________________________________________________
 
-Collectible::Collectible(int x, int y):Entity(x,y)
+Collectible::Collectible(int &x, int &y):Entity(x,y)
 {
 }
 

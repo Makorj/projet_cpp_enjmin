@@ -5,7 +5,7 @@ class Collectible : public Entity
 {
 	public:
 		Collectible()=default;
-		Collectible(int x, int y);
+		Collectible(int &x, int &y);
 		~Collectible();
 
 		bool getCollectible();

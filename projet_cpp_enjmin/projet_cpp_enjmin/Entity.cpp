@@ -7,10 +7,8 @@ Entity::Entity()
 {
 }
 
-Entity::Entity(int x, int y)
+Entity::Entity(int &x, int &y): _posX(x),_posY(y)
 {
-	_posX = x;
-	_posY = y;
 }
 
 //ACCESSER & GETTER_______________________________________________________________________________
