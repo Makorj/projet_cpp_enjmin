@@ -4,19 +4,24 @@
 class Entity 
 {
 //CLASSE ABSTRAITE POUR LES OBJETS SUR LA MAP 
-//LES TUILES CONTIENNENT DES ENTITY 
 
 	public:
 		Entity();
 		Entity(int x, int y);
-		virtual ~Entity()=0;
+	
+		~Entity()=default;
+
+		virtual void UpdateEntity()=0;
 
 		int & getPosX();
 		int & getPosY();
 
-		GraphicalEntity & GetRenderer();
+		GraphicalEntity& GetRenderer();
+		
 	protected: 
 		int _posX;
 		int _posY;
+
+		GraphicalEntity renderer;
 };
 

@@ -9,5 +9,7 @@ class Collectible : public Entity
 		~Collectible() = default;
 
 		bool getCollectible();
+
+		void UpdateEntity() override;
 };
 
