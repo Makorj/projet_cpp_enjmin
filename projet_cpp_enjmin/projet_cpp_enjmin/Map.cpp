@@ -6,11 +6,13 @@ Map::Map()
 {
 }
 
-Map::Map(MapTile *newTile[])
+Map::Map(MapTile* newTile[])
 {
 	for (int i = 0; i < NUMBER_TILES; i++)
 	{
-		_tilesInGame[i] = newTile[i];
+		for(int j = 0 ; j < NUMBER_TILES; j++)
+
+		_tilesInGame[i][j] = newTile[i][j];
 	}
 }
 

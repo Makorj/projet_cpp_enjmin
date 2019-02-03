@@ -8,7 +8,7 @@ class VirtualScreen
 private:
 
 	static const int VSCREEN_HEIGHT = 90;
-	static const int VSCREEN_WIDTH = 160;
+	static const int VSCREEN_WIDTH = 90;
 
 	
 	HANDLE _handleOutput;
