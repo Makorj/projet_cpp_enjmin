@@ -3,7 +3,6 @@
 #include <iostream>
 
 
-
 Data::Data()
 {
 }
@@ -24,9 +23,66 @@ void Data::LoadMap(std::string mapFilePath){
 		return;
 	}
 
-	/*while (!mapFile.eof())
+	MapTile*** mapTileTmp = new MapTile**[8];
+
+	for (int i = 0; i < 8; i++)
 	{
-		map += map
-	}*/
+		mapTileTmp[i] = new MapTile*[8];
+	}
+
+	MapTile* current;
+
+	int i = 0, j = 0;
+	while (!mapFile.eof() && i+j<64)
+	{
+		char tile;
+		mapFile.get(tile);
+
+		switch (tile)
+		{
+		case 'w':
+			current = new MapTile();
+			break;
+		case 'r':
+			current = new MapTile();
+			current->setRoad();
+			break;
+		case 'f':
+			current = new MapTile();
+			current->setRoad();
+			current->addCollectible(new Collectible());
+			break;
+		case 'g':
+			current = new MapTile();
+			current->setRoad();
+
+			break;
+		case 'e':
+			current = new MapTile();
+			current->setEnd();
+			break;
+		case 'p':
+			current = new MapTile();
+			current->setRoad();
+
+			break;
+		default:
+			break;
+		}
+
+		(mapTileTmp[i])[j] = current;
+		current = nullptr;
+
+
+		if (j >= 8)
+		{
+			j = 0;
+			i++;
+		}
+		else 
+		{
+			j++;
+		}
+	}
 
 }
