@@ -18,6 +18,7 @@ Movement::Direction& PlayerMovement::Move()
 	Movement::Direction dir;
 	dir.xDisplacement = 0;
 	dir.yDisplacement = 0;
+	_playerInput->resetInfos();
 	if (_playerInput->getKbInfos().KEY_UP)
 		dir.yDisplacement = 1;
 	else if (_playerInput->getKbInfos().KEY_DOWN)

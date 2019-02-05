@@ -15,7 +15,6 @@ Map::Map(MapTile* newTile[])
 	}
 }
 
-
 Map::~Map()
 {
 	delete[] _tilesInGame;

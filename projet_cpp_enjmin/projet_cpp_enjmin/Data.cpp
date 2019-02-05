@@ -41,29 +41,35 @@ void Data::LoadMap(std::string mapFilePath){
 		switch (tile)
 		{
 		case 'w':
+		//WALL
 			current = new MapTile();
 			current->setWall(2);
 			break;
 		case 'r':
+		//ROAD
 			current = new MapTile();
 			current->setWall(0);
 			break;
 		case 'f':
+		//FRAYSE
 			current = new MapTile();
 			current->setWall(0);
 			current->addCollectible(new Collectible());
 			break;
 		case 'g':
+		//GHOST
 			current = new MapTile();
 			current->setWall(0);
 
 			break;
 		case 'e':
+		//EXIT
 			current = new MapTile();
 			current->setEnd();
 			current->setWall(0);
 			break;
 		case 'p':
+		//PLAYER
 			current = new MapTile();
 			current->setWall(0);
 

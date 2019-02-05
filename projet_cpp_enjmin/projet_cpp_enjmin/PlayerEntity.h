@@ -8,7 +8,6 @@ public:
 	PlayerEntity();
 	~PlayerEntity();
 
-	//Movement::Direction& Move() override;
 	void UpdateEntity() override;
 
 private:
