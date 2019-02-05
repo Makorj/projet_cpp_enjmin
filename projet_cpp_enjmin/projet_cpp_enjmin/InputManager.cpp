@@ -30,7 +30,6 @@ InputManager & InputManager::getInstance()
 		_instance = new InputManager();
 	return *_instance;
 }
-
 void InputManager::updateKbEvents()
 {
 	_infos.ESCAPE = GetAsyncKeyState(VK_ESCAPE);

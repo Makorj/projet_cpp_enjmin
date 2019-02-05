@@ -1,6 +1,7 @@
 #pragma once
 #include "MovementComponent.h"
 #include "Direction.h";
+#include "InputManager.h"
 
 class PlayerMovement : public MovementComponent
 {
@@ -11,6 +12,6 @@ public:
 	Movement::Direction& Move() override;
 
 private:
-	//InputManager _playerInput
+	InputManager *_playerInput;
 };
 

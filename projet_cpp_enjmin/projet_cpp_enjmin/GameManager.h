@@ -1,10 +1,10 @@
 #pragma once
 
 class Data;
-
+       
 class GameManager
 {
-	static GameManager *singleton;
+	static GameManager *_instance;
 
 	Data *mapInfos;
 
@@ -15,11 +15,6 @@ public:
 
 	void Update();
 
-	static GameManager *Instance()
-	{
-		if (!singleton)
-			singleton = new GameManager();
-		return singleton;
-	}
+	static GameManager & getInstance();
 };
 

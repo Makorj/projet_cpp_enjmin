@@ -42,28 +42,30 @@ void Data::LoadMap(std::string mapFilePath){
 		{
 		case 'w':
 			current = new MapTile();
+			current->setWall(2);
 			break;
 		case 'r':
 			current = new MapTile();
-			current->setRoad();
+			current->setWall(0);
 			break;
 		case 'f':
 			current = new MapTile();
-			current->setRoad();
+			current->setWall(0);
 			current->addCollectible(new Collectible());
 			break;
 		case 'g':
 			current = new MapTile();
-			current->setRoad();
+			current->setWall(0);
 
 			break;
 		case 'e':
 			current = new MapTile();
 			current->setEnd();
+			current->setWall(0);
 			break;
 		case 'p':
 			current = new MapTile();
-			current->setRoad();
+			current->setWall(0);
 
 			break;
 		default:
