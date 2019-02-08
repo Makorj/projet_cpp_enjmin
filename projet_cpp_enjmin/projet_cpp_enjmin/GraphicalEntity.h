@@ -12,7 +12,7 @@ private:
 	friend VirtualScreen;
 
 	char* _spriteValues;
-	CharInfo* _spriteInfos;
+	CharInfo _spriteInfos;
 	
 	short _col;
 	short _line;
@@ -23,8 +23,10 @@ private:
 public:
 	GraphicalEntity();
 	GraphicalEntity(const std::string& sprite, const short& col, const short& line, short xAnchor=0, short yAnchor=0);
-	GraphicalEntity(const std::string& sprite, CharInfo* spriteInfo, const short& col, const short& line, short xAnchor = 0, short yAnchor = 0);
+	GraphicalEntity(const std::string& sprite, CharInfo spriteInfo, const short& col, const short& line, short xAnchor = 0, short yAnchor = 0);
 
+	GraphicalEntity(const GraphicalEntity&);
+	GraphicalEntity& operator=(const GraphicalEntity&);
 	~GraphicalEntity();
 };
 

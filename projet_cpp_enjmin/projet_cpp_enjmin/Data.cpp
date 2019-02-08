@@ -1,7 +1,7 @@
 #include "Data.h"
 #include <fstream>
 #include <iostream>
-
+#include "VirtualScreen.h"
 
 Data::Data()
 {
@@ -30,7 +30,7 @@ void Data::LoadMap(std::string mapFilePath){
 		mapTileTmp[i] = new MapTile*[8];
 	}
 
-	MapTile* current;
+	MapTile* current = nullptr;
 
 	int i = 0, j = 0;
 	while (!mapFile.eof() && i+j<64)
@@ -78,7 +78,8 @@ void Data::LoadMap(std::string mapFilePath){
 			break;
 		}
 
-		(mapTileTmp[i])[j] = current;
+		if(current!=nullptr)
+			(mapTileTmp[i])[j] = current;
 		current = nullptr;
 
 
@@ -92,5 +93,57 @@ void Data::LoadMap(std::string mapFilePath){
 			j++;
 		}
 	}
+}
 
+// LOADERS
+
+std::string const Data::spriteSheetFilePath = "spritesheets.txt";
+
+std::string Data::LoadSpriteFromSpriteSheet(int id)
+{
+	std::fstream spritesheetFile(spriteSheetFilePath.c_str(), std::ios::in);
+	std::string map = "";
+
+	if (!spritesheetFile.is_open())
+	{
+		VirtualScreen::debug("Unable to open spritesheet " + spriteSheetFilePath);
+		return std::string();
+	}
+
+	bool found = false;
+	int size = 0;
+	int actualId = 0;
+	std::string line;
+	std::string sprite;
+
+	while (!spritesheetFile.eof() && !found)
+	{
+		spritesheetFile >> line ;
+		actualId = std::stoi(line);
+
+		if (actualId == id)
+		{
+			spritesheetFile >> line;
+			size = std::stoi(line);
+
+			spritesheetFile >> line;
+			size *= std::stoi(line);
+	
+			spritesheetFile >> line ;
+			sprite = line;
+
+			found = true;
+		}
+		else
+		{
+			spritesheetFile >> line;
+			spritesheetFile >> line;
+			spritesheetFile >> line;
+		}
+	}
+
+	if (found)
+		return sprite;
+	else
+		return std::string();
 }

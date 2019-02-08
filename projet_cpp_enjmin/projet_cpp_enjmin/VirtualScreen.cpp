@@ -37,16 +37,16 @@ void VirtualScreen::draw(const GraphicalEntity & sprite, const int & coordX, con
 	draw(sprite._spriteValues, sprite._spriteInfos, sprite._col, sprite._line, coordX, coordY);
 }
 
-void VirtualScreen::draw(const std::string& sprite, const CharInfo* spriteInfos, const int& width, const int& height, const int& coordX, const int& coordY)
+void VirtualScreen::draw(const std::string& sprite, const CharInfo& spriteInfos, const int& width, const int& height, const int& coordX, const int& coordY)
 {
 	int indice = 0;
 	for (int i = 0; i < height; ++i)
 	{
 		for (int j = 0; j < width; ++j)
 		{
-			indice = j + (width * i);
 			_virtualScreenBuffer[i + coordY][j + coordX].Char.AsciiChar = sprite[indice];
-			_virtualScreenBuffer[i + coordY][j + coordX].Attributes = spriteInfos[indice];
+			_virtualScreenBuffer[i + coordY][j + coordX].Attributes = spriteInfos;
+			indice++;
 		}
 	}
 }
