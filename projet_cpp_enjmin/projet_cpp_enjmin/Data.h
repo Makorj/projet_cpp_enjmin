@@ -12,11 +12,11 @@ public:
 	static const std::string spriteSheetFilePath;
 
 	static std::string LoadSpriteFromSpriteSheet(int id);
+	void LoadMap(std::string);
 private:
 	//std::reference_wrapper<Entity> _entitiesInGame;
 	Entity * _montableau[64];
 	Map* _gameMap;
 
-	void LoadMap(std::string);
 };
 

@@ -14,14 +14,28 @@ Data::~Data()
 
 void Data::LoadMap(std::string mapFilePath){
 
-	std::fstream mapFile(mapFilePath.c_str(), std::ios::in);
+	std::ifstream mapFile(mapFilePath);
+	std::string lines;
 	std::string map = "";
 
 	if (!mapFile.is_open())
 	{
+		VirtualScreen::debug("Unable to open mapfile " + mapFilePath);
 		std::cerr << "Unable to open mapfile " + mapFilePath << std::endl;
 		return;
 	}
+
+	while(!mapFile.eof() && std::getline(mapFile, lines) )
+		map += lines;
+
+	map = "w,w,w,w,w,w,w,\
+w,w,w,w,w,w,w,w\
+w,w,w,w,w,w,w,w\
+w,w,w,w,w,w,w,w\
+w,w,w,w,w,w,w,w\
+w,w,w,w,w,w,w,w\
+w,w,w,w,w,w,w,w\
+w,w,w,w,w,w,w,w";
 
 	MapTile*** mapTileTmp = new MapTile**[8];
 
@@ -32,11 +46,19 @@ void Data::LoadMap(std::string mapFilePath){
 
 	MapTile* current = nullptr;
 
-	int i = 0, j = 0;
-	while (!mapFile.eof() && i+j<64)
+	int i = 0, j = 0, k = 0;
+	while (i+j<64 && k<64)
 	{
 		char tile;
-		mapFile.get(tile);
+		//mapFile.get(tile);
+
+		tile = map[k];
+		k++;
+
+		VirtualScreen::debug(std::to_string(i));
+
+		if (tile == ',')
+			continue;
 
 		switch (tile)
 		{
@@ -44,6 +66,8 @@ void Data::LoadMap(std::string mapFilePath){
 		//WALL
 			current = new MapTile();
 			current->setWall(2);
+
+			VirtualScreen::debug("Wall");
 			break;
 		case 'r':
 		//ROAD
@@ -80,6 +104,7 @@ void Data::LoadMap(std::string mapFilePath){
 
 		if(current!=nullptr)
 			(mapTileTmp[i])[j] = current;
+
 		current = nullptr;
 
 
@@ -93,6 +118,16 @@ void Data::LoadMap(std::string mapFilePath){
 			j++;
 		}
 	}
+
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 8; j++)
+		{
+		//VirtualScreen::debug( (mapTileTmp[i])[j].getStringType() );
+		}
+	}
+
+	VirtualScreen::debug("CARTE LOADED");
 }
 
 // LOADERS

@@ -17,8 +17,6 @@ private:
 
 	KB_INFO _infos;
 
-
-
 public:
 	InputManager();
 	~InputManager();

@@ -6,6 +6,11 @@ void MapTile::UpdateEntity()
 
 }
 
+std::string MapTile::getStringType() const
+{
+	return _wallHp>0?"wallTaMere":"pasWall";
+}
+
 //CONSTRUCTOR & DESTRUCTOR_________________________________________________________________________
 
 MapTile::MapTile()

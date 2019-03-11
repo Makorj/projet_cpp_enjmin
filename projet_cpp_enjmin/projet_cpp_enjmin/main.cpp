@@ -5,6 +5,7 @@
 #include <conio.h>
 #include "Timer.h"
 #include "View.h"
+#include "Data.h"
 #include "InputManager.h"
 
 using namespace std;
@@ -14,6 +15,10 @@ int main()
 	Timer t;
 	View _view;
 	InputManager inputManager;
+
+	Data* data = new Data();
+	data->LoadMap("carte.txt");
+
 
 	t.start();
 	while (inputManager.getKbInfos().ESCAPE != true)

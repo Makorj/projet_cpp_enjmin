@@ -68,7 +68,6 @@ GraphicalEntity & GraphicalEntity::operator=(const GraphicalEntity & cpy)
 	_xAnchor =(cpy._xAnchor);
 	_yAnchor = (cpy._yAnchor);
 
-
 	return *this;
 }
 

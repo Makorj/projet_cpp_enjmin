@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include "Collectible.h"
+
 class MapTile : public Entity
 {
 
@@ -24,5 +25,7 @@ public:
 	void resetEntity();
 
 	void UpdateEntity() override;
+
+	std::string getStringType() const;
 };
 
