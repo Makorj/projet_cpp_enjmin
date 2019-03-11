@@ -21,6 +21,31 @@ public:
 	void addCollectible(Collectible* collect);
 	void addEntity(Entity* newEntity);
 
+	bool* getIsEnd()
+	{
+		return &_isEnd;
+	}
+
+	bool isWall()
+	{
+		return (_wallHp > 0);
+	}
+
+	int* getWallHp()
+	{
+		return &_wallHp;
+	}
+
+	Collectible* getCollectibleOnTile()
+	{
+		return _collectible;
+	}
+
+	Entity* getEntityOnTile()
+	{
+		return _entityOnTile;
+	}
+
 	void resetCollectible();
 	void resetEntity();
 

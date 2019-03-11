@@ -7,6 +7,7 @@ class PlayerEntity : public Entity
 {
 public:
 	PlayerEntity();
+	PlayerEntity(int*x, int*y);
 	~PlayerEntity();
 
 	void UpdateEntity() override;
@@ -18,5 +19,6 @@ public:
 
 private:
 	PlayerMovement * _playerMovement;
+	int frayse;
 };
 

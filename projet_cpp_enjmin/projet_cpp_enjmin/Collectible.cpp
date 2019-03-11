@@ -1,4 +1,5 @@
 #include "Collectible.h"
+#include "Data.h"
 
 
 void Collectible::UpdateEntity()
@@ -24,5 +25,6 @@ Collectible::~Collectible()
 bool Collectible::getCollectible()
 {
 	//RECUPERATION DU COLLECTIBLE LORSQUE LE JOUEUR MARCHE SUR LA TUILE 
-	return false;
+	Data::getInstance().GetGameMap()->GetTileAtPosition(&_posX, &_posY)->resetCollectible();
+	return true;
 }

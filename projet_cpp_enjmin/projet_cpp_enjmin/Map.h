@@ -1,5 +1,6 @@
 #pragma once
 #include "MapTile.h";
+#include "Data.h"
 
 class Map
 {

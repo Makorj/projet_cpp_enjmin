@@ -22,7 +22,7 @@ Map::~Map()
 
 MapTile * Map::GetTileAtPosition(int * x, int * y)
 {
-	if (*x >= NUMBER_TILES || *y >= NUMBER_TILES)
+	if ((*x >= NUMBER_TILES || *y >= NUMBER_TILES)||(*x < 0 || *y < 0 ))
 		return nullptr;
 	return &_tilesInGame[*x][*y];
 }

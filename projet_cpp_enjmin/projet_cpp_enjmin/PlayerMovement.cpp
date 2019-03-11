@@ -35,7 +35,6 @@ bool PlayerMovement::GetEscButton()
 {
 	_playerInput->resetInfos();
 	_playerInput->updateKbEvents();
-
 	return _playerInput->getKbInfos().ESCAPE;
 }
 
