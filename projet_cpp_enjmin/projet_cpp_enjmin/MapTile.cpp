@@ -37,7 +37,7 @@ void MapTile::DamageWall()
 {
 	if (_wallHp <= 0)
 		return;
-	_wallHp -= 1;
+	_wallHp --;
 }
 
 void MapTile::setEnd()

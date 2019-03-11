@@ -7,6 +7,7 @@
 #include "View.h"
 #include "Data.h"
 #include "InputManager.h"
+#include "PlayerEntity.h"
 
 using namespace std;
 
@@ -14,17 +15,18 @@ int main()
 {
 	Timer t;
 	View _view;
-	InputManager inputManager;
+	//InputManager inputManager;
+
+	PlayerEntity * playerTest= new PlayerEntity();
 
 	Data* data = new Data();
 	data->LoadMap("carte.txt");
 
 
 	t.start();
-	while (inputManager.getKbInfos().ESCAPE != true)
-	{
-		inputManager.resetInfos();
-		inputManager.updateKbEvents();
+	while( ! playerTest->GetMovement().GetEscButton())
+	{ 
+		playerTest->GetMovement().Move();
 
 		_view.Update();
 		_view.Render();

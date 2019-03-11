@@ -11,6 +11,13 @@ public:
 
 	Movement::Direction& Move() override;
 
+	bool GetEscButton();
+
+	InputManager & GetInputManager()
+	{
+		return *_playerInput;
+	}
+
 private:
 	InputManager *_playerInput;
 };

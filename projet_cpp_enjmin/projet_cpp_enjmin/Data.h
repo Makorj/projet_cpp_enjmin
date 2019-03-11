@@ -13,10 +13,18 @@ public:
 
 	static std::string LoadSpriteFromSpriteSheet(int id);
 	void LoadMap(std::string);
+
+	static Data & getInstance();
+
+	Map * GetGameMap();
+
+
 private:
 	//std::reference_wrapper<Entity> _entitiesInGame;
 	Entity * _montableau[64];
 	Map* _gameMap;
+
+	static Data* _instance;
 
 };
 

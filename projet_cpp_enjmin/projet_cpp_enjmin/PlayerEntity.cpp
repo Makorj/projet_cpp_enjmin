@@ -4,9 +4,14 @@
 
 void PlayerEntity::UpdateEntity()
 {
-	_playerMovement->Move();
-	//stocker la direction dans une variable et intérroger la map pour savoir si je peux effectuer ce mouvement
+	Movement::Direction dir = _playerMovement->Move();
+	//interroger la map pour savoir si je peux effectuer ce mouvement
+	MapTile* concernedTile = Data::getInstance().GetGameMap()->GetTileAtPosition(&dir.xDisplacement, &dir.yDisplacement);
 	//faire le traitement en fonction
+	if (concernedTile == nullptr)
+		//on essaie de bouger hors range du niveau
+		return;
+	
 }
 
 //CONSTRUCTOR & DESTRUCTOR_________________________________________________________________________

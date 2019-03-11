@@ -19,3 +19,10 @@ Map::~Map()
 {
 	delete[] _tilesInGame;
 }
+
+MapTile * Map::GetTileAtPosition(int * x, int * y)
+{
+	if (*x >= NUMBER_TILES || *y >= NUMBER_TILES)
+		return nullptr;
+	return &_tilesInGame[*x][*y];
+}

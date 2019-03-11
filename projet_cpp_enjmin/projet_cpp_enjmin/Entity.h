@@ -16,6 +16,12 @@ class Entity
 		int & getPosX();
 		int & getPosY();
 
+		void SetPosition(int x, int y)
+		{
+			_posX = x;
+			_posY = y;
+		}
+
 		GraphicalEntity& GetRenderer();
 		
 	protected: 

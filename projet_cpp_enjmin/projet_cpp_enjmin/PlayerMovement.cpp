@@ -19,6 +19,7 @@ Movement::Direction& PlayerMovement::Move()
 	dir.xDisplacement = 0;
 	dir.yDisplacement = 0;
 	_playerInput->resetInfos();
+	_playerInput->updateKbEvents();
 	if (_playerInput->getKbInfos().KEY_UP)
 		dir.yDisplacement = 1;
 	else if (_playerInput->getKbInfos().KEY_DOWN)
@@ -29,3 +30,12 @@ Movement::Direction& PlayerMovement::Move()
 		dir.xDisplacement = -1;
 	return dir;
 }
+
+bool PlayerMovement::GetEscButton()
+{
+	_playerInput->resetInfos();
+	_playerInput->updateKbEvents();
+
+	return _playerInput->getKbInfos().ESCAPE;
+}
+

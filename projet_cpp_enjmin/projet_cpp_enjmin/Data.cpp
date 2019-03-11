@@ -84,7 +84,9 @@ w,w,w,w,w,w,w,w";
 		//GHOST
 			current = new MapTile();
 			current->setWall(0);
-
+			//instancier un fantome
+			//ajouter le fantome au tableau d'entity de data
+			//set le posX et posY de Entity
 			break;
 		case 'e':
 		//EXIT
@@ -182,3 +184,18 @@ std::string Data::LoadSpriteFromSpriteSheet(int id)
 	else
 		return std::string();
 }
+
+Data* Data::_instance = nullptr;
+
+Data & Data::getInstance()
+{
+	if (_instance == nullptr)
+		_instance = new Data();
+	return *_instance;
+}
+
+Map * Data::GetGameMap()
+{
+	return _gameMap;
+}
+
