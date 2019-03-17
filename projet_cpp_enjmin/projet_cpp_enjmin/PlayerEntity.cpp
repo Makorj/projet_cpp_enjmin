@@ -4,8 +4,10 @@
 
 void PlayerEntity::UpdateEntity()
 {
-	Movement::Direction dir = _playerMovement->Move();
-	MapTile* concernedTile = Data::getInstance().GetGameMap()->GetTileAtPosition(&dir.xDisplacement, &dir.yDisplacement);
+	Movement::Direction dir = _playerMovement->Move(&_posX,&_posY);
+	int xPos = _posX + dir.xDisplacement;
+	int yPos = _posY + dir.yDisplacement;
+	MapTile* concernedTile = Data::getInstance().GetGameMap()->GetTileAtPosition(&xPos, &yPos);
 	
 	if ((concernedTile == nullptr) || (concernedTile->getEntityOnTile()!=nullptr))
 		//on essaie de bouger hors range du niveau ou dans un ennemis

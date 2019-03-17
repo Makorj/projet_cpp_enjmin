@@ -7,7 +7,7 @@ public:
 	MovementComponent();
 	~MovementComponent();
 
-	virtual Movement::Direction& Move() = 0;
+	virtual Movement::Direction& Move(int* posX, int* posY) = 0;
 
 protected:
 	//DATA ACCESS

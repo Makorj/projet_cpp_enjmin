@@ -9,7 +9,7 @@ public:
 	PlayerMovement();
 	~PlayerMovement();
 
-	Movement::Direction& Move() override;
+	Movement::Direction& Move(int* posX, int* posY) override;
 
 	bool GetEscButton();
 

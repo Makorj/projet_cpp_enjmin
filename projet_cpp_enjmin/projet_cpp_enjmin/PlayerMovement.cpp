@@ -13,7 +13,7 @@ PlayerMovement::~PlayerMovement()
 {
 }
 
-Movement::Direction& PlayerMovement::Move()
+Movement::Direction& PlayerMovement::Move(int* posX, int* posY)
 {
 	Movement::Direction dir;
 	dir.xDisplacement = 0;

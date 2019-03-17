@@ -9,7 +9,7 @@ public:
 	GhostMovement(); 
 	~GhostMovement();
 
-	Movement::Direction& Move() override;
+	Movement::Direction& Move(int* posX, int* posY) override;
 
 	void setPreviousMovement(Movement::Direction* dir)
 	{
@@ -17,6 +17,10 @@ public:
 	}
 
 private:
+	int orientation; // 0à49 : horaire - 50à99 : trigo
+
 	Movement::Direction* _previousMovement;
+	void getFirstMovementDirection();
+	void getNextMovementDirection();
 };
 
