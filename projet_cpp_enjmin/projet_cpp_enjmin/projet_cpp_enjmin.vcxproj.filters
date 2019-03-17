@@ -135,4 +135,9 @@
       <Filter>Fichiers d%27en-tête\Entities</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="spritesheets.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

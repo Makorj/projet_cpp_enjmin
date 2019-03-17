@@ -21,6 +21,21 @@ MapTile::MapTile()
 {
 }
 
+MapTile & MapTile::operator=(const MapTile & cpy)
+{
+	_posX = cpy._posX;
+	_posY = cpy._posY;
+
+	_isEnd = cpy._isEnd;
+	_wallHp = cpy._wallHp;
+
+	_entityOnTile = cpy._entityOnTile;
+	_collectible = cpy._collectible;
+
+	renderer = cpy.renderer;
+
+	return *this;
+}
 
 MapTile::~MapTile()
 {

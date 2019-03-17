@@ -32,9 +32,20 @@ VirtualScreen::~VirtualScreen()
 }
 
 
-void VirtualScreen::draw(const GraphicalEntity & sprite, const int & coordX, const int & coordY)
+void VirtualScreen::draw(const GraphicalEntity* sprite, const int & coordX, const int & coordY)
 {
-	draw(sprite._spriteValues, sprite._spriteInfos, sprite._col, sprite._line, coordX, coordY);
+	//draw(sprite->_spriteValues, sprite->_spriteInfos, sprite->_col, sprite->_line, coordX, coordY);
+
+	int indice = 0;
+	for (int i = 0; i < sprite->_col; ++i)
+	{
+		for (int j = 0; j < sprite->_line; ++j)
+		{
+			indice = j + (sprite->_line * i);
+			_virtualScreenBuffer[i + coordY][j + coordX].Char.AsciiChar = sprite->_spriteValues[indice];
+			_virtualScreenBuffer[i + coordY][j + coordX].Attributes = sprite->_spriteInfos;
+		}
+	}
 }
 
 void VirtualScreen::draw(const std::string& sprite, const CharInfo& spriteInfos, const int& width, const int& height, const int& coordX, const int& coordY)

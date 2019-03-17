@@ -21,7 +21,7 @@ public:
 	VirtualScreen();
 	~VirtualScreen();
 
-	void draw(const GraphicalEntity& sprite, const int& coordX, const int& coordY);
+	void draw(const GraphicalEntity* sprite, const int& coordX, const int& coordY);
 
 	void draw(const std::string& sprite, const CharInfo& spriteInfo, const int& width, const int& height, const int& coordX, const int& coordY);
 	void draw(const char* sprite, int width, int height, int coordX, int coordY);

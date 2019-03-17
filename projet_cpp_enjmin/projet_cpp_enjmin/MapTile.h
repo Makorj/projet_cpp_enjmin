@@ -52,5 +52,9 @@ public:
 	void UpdateEntity() override;
 
 	std::string getStringType() const;
+
+
+	MapTile& operator=(const MapTile&);
+
 };
 

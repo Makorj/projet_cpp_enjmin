@@ -2,8 +2,12 @@
 #include <fstream>
 #include <iostream>
 #include "VirtualScreen.h"
+#include "PlayerEntity.h"
+#include "Map.h"
+#include "GhostEntity.h"
 
 Data::Data()
+	: nbEntity(0)
 {
 }
 
@@ -12,10 +16,10 @@ Data::~Data()
 {
 }
 
-void Data::LoadMap(std::string mapFilePath){
+void Data::LoadMap(std::string mapFilePath, GraphicalEntity* gEntities) {
 
-	std::ifstream mapFile(mapFilePath);
-	std::string lines;
+	std::ifstream mapFile(mapFilePath.c_str(), std::ios::in);
+	std::string lines = "";
 	std::string map = "";
 
 	if (!mapFile.is_open())
@@ -25,39 +29,33 @@ void Data::LoadMap(std::string mapFilePath){
 		return;
 	}
 
-	while(!mapFile.eof() && std::getline(mapFile, lines) )
+	while (!mapFile.eof())
+	{
+		mapFile >> lines;
 		map += lines;
+	}
 
-	map = "w,w,w,w,w,w,w,\
-w,w,w,w,w,w,w,w\
-w,w,w,w,w,w,w,w\
-w,w,w,w,w,w,w,w\
-w,w,w,w,w,w,w,w\
-w,w,w,w,w,w,w,w\
-w,w,w,w,w,w,w,w\
-w,w,w,w,w,w,w,w";
-
-	MapTile*** mapTileTmp = new MapTile**[8];
+	/*MapTile*** mapTileTmp = new MapTile**[8];
 
 	for (int i = 0; i < 8; i++)
 	{
 		mapTileTmp[i] = new MapTile*[8];
-	}
+	}*/
 
 	MapTile* current = nullptr;
 
+	MapTile test[8][8];
+
 	int i = 0, j = 0, k = 0;
-	while (i+j<64 && k<64)
+	// 7*7 -> (8 cases - 1) * (8 cases - 1) car le tableau commence a zero et la case max en est en i=j=7
+	while (i*j<(7*7)+1 && k < map.size())
 	{
 		char tile;
-		//mapFile.get(tile);
 
 		tile = map[k];
 		k++;
 
-		VirtualScreen::debug(std::to_string(i));
-
-		if (tile == ',')
+		if (tile == ',' || tile == '\n')
 			continue;
 
 		switch (tile)
@@ -65,6 +63,7 @@ w,w,w,w,w,w,w,w";
 		case 'w':
 		//WALL
 			current = new MapTile();
+			current->SetRenderer(&(gEntities[1]));
 			current->setWall(2);
 
 			VirtualScreen::debug("Wall");
@@ -72,11 +71,13 @@ w,w,w,w,w,w,w,w";
 		case 'r':
 		//ROAD
 			current = new MapTile();
+			current->SetRenderer(&(gEntities[0]));
 			current->setWall(0);
 			break;
 		case 'f':
 		//FRAYSE
 			current = new MapTile();
+			current->SetRenderer(&(gEntities[5]));
 			current->setWall(0);
 			current->addCollectible(new Collectible());
 			break;
@@ -84,33 +85,39 @@ w,w,w,w,w,w,w,w";
 		//GHOST
 			current = new MapTile();
 			current->setWall(0);
-			//instancier un fantome
-			//ajouter le fantome au tableau d'entity de data
-			//set le posX et posY de Entity
+			current->SetRenderer(&(gEntities[3]));
+			
+			current->addEntity(new GhostEntity(&i, &j));
+
 			break;
 		case 'e':
 		//EXIT
 			current = new MapTile();
+			current->SetRenderer(&(gEntities[4]));
 			current->setEnd();
 			current->setWall(0);
 			break;
 		case 'p':
 		//PLAYER
 			current = new MapTile();
+			current->SetRenderer(&(gEntities[4]));
 			current->setWall(0);
+
+			current->addEntity(new PlayerEntity(&i, &j));
 
 			break;
 		default:
 			break;
 		}
 
-		if(current!=nullptr)
-			(mapTileTmp[i])[j] = current;
-
+		if (current != nullptr)
+			//(mapTileTmp[i])[j] = current;
+			test[i][j] = *current;
+		
 		current = nullptr;
 
 
-		if (j >= 8)
+		if (j >= 7)
 		{
 			j = 0;
 			i++;
@@ -121,13 +128,7 @@ w,w,w,w,w,w,w,w";
 		}
 	}
 
-	for (int i = 0; i < 8; i++)
-	{
-		for (int j = 0; j < 8; j++)
-		{
-		//VirtualScreen::debug( (mapTileTmp[i])[j].getStringType() );
-		}
-	}
+	_gameMap = new Map(test);
 
 	VirtualScreen::debug("CARTE LOADED");
 }
@@ -187,14 +188,14 @@ std::string Data::LoadSpriteFromSpriteSheet(int id)
 
 Data* Data::_instance = nullptr;
 
-Data & Data::getInstance()
+Data& Data::getInstance()
 {
 	if (_instance == nullptr)
 		_instance = new Data();
 	return *_instance;
 }
 
-Map * Data::GetGameMap()
+Map* Data::GetGameMap()
 {
 	return _gameMap;
 }

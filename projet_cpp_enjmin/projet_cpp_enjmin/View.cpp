@@ -4,6 +4,15 @@
 #include "InputManager.h"
 #include "Data.h"
 
+
+#define NUMBER_OF_SPRITE 6
+#define SPRITE_ID_DEFAULT 0
+#define SPRITE_ID_WALL_FULL 1
+#define SPRITE_ID_WALL_HALF 2
+#define SPRITE_ID_GHOST 3
+#define SPRITE_ID_PLAYER 4
+#define SPRITE_ID_FRUIT 5
+
 const std::string florent_str =
 "         :::::::::: :::        ::::::::  :::::::::  :::::::::: ::::    ::: :::::::::::\
          :+:        :+:       :+:    :+: :+:    :+: :+:        :+:+:   :+:     :+:    \
@@ -18,21 +27,31 @@ View::View()
 	: _entities(new GraphicalEntity[MAX_GRAPHICAL_ENTITIES]),
 	_nbEntities(0)
 {
-	std::string tile1 = Data::LoadSpriteFromSpriteSheet(1);
-	std::string tile2 = Data::LoadSpriteFromSpriteSheet(2);
+	std::string sprites[NUMBER_OF_SPRITE];
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < NUMBER_OF_SPRITE; i++)
 	{
-		GraphicalEntity tmp(i % 2 == 0 ? tile1 : tile2, 5, 5);
+		sprites[i] = Data::LoadSpriteFromSpriteSheet(i+1);
+	}
+
+	for (int i = 0; i < NUMBER_OF_SPRITE; i++)
+	{
+		GraphicalEntity tmp(sprites[i], 5, 5);
 		_entities[i] = tmp;
 		_nbEntities++;
 	}
+
 }
 
 
 View::~View()
 {
 	delete[] _entities;
+}
+
+GraphicalEntity* View::getGraphicalEntities()
+{
+	return _entities;
 }
 
 volatile int posX = 50;
@@ -55,12 +74,7 @@ void View::Render()
 {
 	_screen.clear();
 
-	GraphicalEntity* a;
-	for (char i = 0; i < _nbEntities; ++i)
-	{
-		a = &(_entities[i]);
-		_screen.draw(*a, i*5, 10);//_entityMap[a]->getPosX(),_entityMap[a]->getPosY());
-	}
+	DrawMap();
 
 	_screen.draw(florent_str.c_str(), 86, 7, posX, posY);
 
@@ -69,4 +83,33 @@ void View::Render()
 #endif // DEBUG
 
 	_screen.flip();
+}
+
+void View::setData(Data* data)
+{
+	_data = data;
+}
+
+void View::DrawMap()
+{
+	if (_data->GetGameMap() == nullptr)
+		printf("caca");
+
+	MapTile* tmpTile;
+	for (int i = 0; i < _data->GetGameMap()->NUMBER_TILES; i++)
+	{
+		for (int j = 0; j < _data->GetGameMap()->NUMBER_TILES; j++)
+		{
+			tmpTile = _data->GetGameMap()->GetTileAtPosition(&i, &j);
+
+			if (tmpTile != nullptr)
+			{
+				if (tmpTile->GetRenderer() == nullptr)
+					printf("caca");
+
+				_screen.draw(tmpTile->GetRenderer(), i*5, j*5);
+				tmpTile = nullptr;
+			}
+		}
+	}
 }

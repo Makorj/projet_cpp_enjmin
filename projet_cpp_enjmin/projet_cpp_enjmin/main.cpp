@@ -20,13 +20,15 @@ int main()
 	PlayerEntity * playerTest= new PlayerEntity();
 
 	Data* data = new Data();
-	data->LoadMap("carte.txt");
 
+	data->LoadMap("carte.txt", _view.getGraphicalEntities());
+
+	_view.setData(data);
 
 	t.start();
 	while( ! playerTest->GetMovement().GetEscButton())
 	{ 
-		playerTest->GetMovement().Move();
+		//playerTest->GetMovement().Move();
 
 		_view.Update();
 		_view.Render();

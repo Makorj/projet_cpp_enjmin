@@ -23,7 +23,12 @@ int & Entity::getPosY()
 	return _posY;
 }
 
-GraphicalEntity& Entity::GetRenderer()
+GraphicalEntity* Entity::GetRenderer()
 {
 	return renderer;
+}
+
+void Entity::SetRenderer(GraphicalEntity* trenderer)
+{
+	renderer = trenderer;
 }

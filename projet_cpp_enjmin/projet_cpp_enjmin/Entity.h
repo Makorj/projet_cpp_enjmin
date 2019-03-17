@@ -22,12 +22,14 @@ class Entity
 			_posY = y;
 		}
 
-		GraphicalEntity& GetRenderer();
+		GraphicalEntity* GetRenderer();
+
+		void SetRenderer(GraphicalEntity* renderer);
 		
 	protected: 
 		int _posX;
 		int _posY;
 
-		GraphicalEntity renderer;
+		GraphicalEntity* renderer;
 };
 

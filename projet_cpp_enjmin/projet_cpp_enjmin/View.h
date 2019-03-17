@@ -4,13 +4,13 @@
 #include "Entity.h"
 #include <map>
 
+class Data;
+
 class View
 {
 private:
 
 	const static int MAX_GRAPHICAL_ENTITIES = 10;
-
-	//GraphicalMap _graphicalMap;
 
 	GraphicalEntity* _entities;
 	char _nbEntities;
@@ -18,16 +18,21 @@ private:
 	std::map<GraphicalEntity*, Entity*> _entityMap;
 
 	VirtualScreen _screen;
+	Data* _data;
+
+	void DrawMap();
 
 public:
 	View();
 	
 	~View();
 
-	/*GraphicalMap& getGraphicalMap() const;*/
+	GraphicalEntity* getGraphicalEntities();
 
 	void Update();
 	void Render();
+
+	void setData(Data* data);
 
 
 };

@@ -1,5 +1,6 @@
 #include "Collectible.h"
 #include "Data.h"
+#include "Map.h"
 
 
 void Collectible::UpdateEntity()

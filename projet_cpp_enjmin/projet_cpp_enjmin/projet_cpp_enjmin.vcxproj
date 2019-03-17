@@ -153,6 +153,12 @@
     <ClInclude Include="View.h" />
     <ClInclude Include="VirtualScreen.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="spritesheets.txt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </Text>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

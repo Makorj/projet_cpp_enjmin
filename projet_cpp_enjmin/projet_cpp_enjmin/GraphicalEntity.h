@@ -11,7 +11,7 @@ private:
 	
 	friend VirtualScreen;
 
-	char* _spriteValues;
+	char _spriteValues[25];
 	CharInfo _spriteInfos;
 	
 	short _col;

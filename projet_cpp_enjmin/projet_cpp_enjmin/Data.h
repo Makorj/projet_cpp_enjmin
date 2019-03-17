@@ -1,5 +1,5 @@
 #pragma once
-#include "Map.h";
+#include "Map.h"
 
 class Entity;
 
@@ -12,16 +12,16 @@ public:
 	static const std::string spriteSheetFilePath;
 
 	static std::string LoadSpriteFromSpriteSheet(int id);
-	void LoadMap(std::string);
+	void LoadMap(std::string mapFilePath, GraphicalEntity * gEntities);
 
-	static Data & getInstance();
+	static Data& getInstance();
 
-	Map * GetGameMap();
-
+	Map* GetGameMap();
 
 private:
-	//std::reference_wrapper<Entity> _entitiesInGame;
-	Entity * _montableau[64];
+	
+	Entity * _entities[64];
+	int nbEntity;
 	Map* _gameMap;
 
 	static Data* _instance;
